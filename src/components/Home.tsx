@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import NameCard from '../common/NameCard';
-import TodoList from './TodoList';
+import NameCard from './common/NameCard';
+import TodoList from './todos/TodoList';
 
 const styles = StyleSheet.create({
   wrapper: {
