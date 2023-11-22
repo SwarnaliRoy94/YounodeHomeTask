@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
@@ -14,12 +14,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ECE3ED',
     alignItems: 'center',
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
   greetView: {
-    // backgroundColor: 'orange',
     alignItems: 'center',
-    marginTop: 100,
     marginBottom: 30,
   },
   greetText1: {
@@ -83,7 +81,11 @@ const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}
+      colors={['#ECE3ED', '#FDF2E9', '#ECE3ED']}
+      style={styles.wrapper}>
       <View style={styles.greetView}>
         <Text style={styles.greetText1}>Hello!</Text>
         <Text style={styles.greetText2}>Sign in to your account</Text>
@@ -124,7 +126,7 @@ const Login: FC = () => {
           <Text style={styles.text2}>Create a New Account</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 

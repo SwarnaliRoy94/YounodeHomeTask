@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ECE3ED',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   greetView: {
     alignItems: 'center',
-    marginTop: 100,
     marginBottom: 30,
   },
   greetText1: {
@@ -82,7 +82,11 @@ const SignUp: FC = () => {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}
+      colors={['#ECE3ED', '#FDF2E9', '#ECE3ED']}
+      style={styles.wrapper}>
       <View style={styles.greetView}>
         <Text style={styles.greetText1}>Create New Account!!</Text>
       </View>
@@ -127,7 +131,7 @@ const SignUp: FC = () => {
           <Text style={styles.text2}>Go Back to Login Screen</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 
