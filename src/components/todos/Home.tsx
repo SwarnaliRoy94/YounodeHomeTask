@@ -1,11 +1,23 @@
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
+import NameCard from '../common/NameCard';
+import TodoList from './TodoList';
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    backgroundColor: '#ECE3ED',
+    paddingVertical: 20,
+    alignItems: 'center',
+  },
+});
 
 const Home: FC = () => {
   return (
-    <View>
-      <Text>This is home!</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.wrapper}>
+      <NameCard userName="Swarnali" noOfTasks={3} />
+      <TodoList />
+    </ScrollView>
   );
 };
 
