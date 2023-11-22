@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   greetText1: {
-    fontSize: 50,
+    fontSize: 40,
     fontWeight: '600',
     color: '#884EA0',
   },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
-    height: 40,
+    height: 50,
     marginVertical: 12,
     borderWidth: 1,
     padding: 10,

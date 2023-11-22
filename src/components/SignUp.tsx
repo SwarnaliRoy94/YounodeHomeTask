@@ -69,8 +69,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    width: '50%',
-    backgroundColor: '#F5CBA7',
+    width: '90%',
+    backgroundColor: '#EBDEF0',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 8,
+  },
+  socialLoginView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
+  googleButton: {
+    width: '80%',
+    backgroundColor: '#fff',
     alignItems: 'center',
     padding: 15,
     borderRadius: 8,
@@ -124,11 +138,18 @@ const SignUp: FC = () => {
         </View>
       </View>
       <View>
-        <Text>Or</Text>
+        <Text>Or Sign Up with</Text>
+      </View>
+      <View style={styles.socialLoginView}>
+        <TouchableOpacity style={styles.googleButton}>
+          <Text style={styles.text1}>Google</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity>
-          <Text style={styles.text2}>Go Back to Login Screen</Text>
+          <Text>
+            Already have an account? <Text style={styles.text2}>Login Now</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
