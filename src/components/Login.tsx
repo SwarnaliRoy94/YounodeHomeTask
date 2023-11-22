@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   greetText1: {
-    fontSize: 60,
+    fontSize: 50,
     fontWeight: '600',
     color: '#884EA0',
   },
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontSize: 14,
+    fontWeight: 'bold',
     textDecorationLine: 'underline',
     color: '#884EA0',
   },
@@ -66,11 +67,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    marginTop: 50,
+    marginTop: 30,
   },
   button: {
-    width: '50%',
-    backgroundColor: '#F5CBA7',
+    width: '90%',
+    backgroundColor: '#EBDEF0',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 8,
+  },
+  socialLoginView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
+  googleButton: {
+    width: '80%',
+    backgroundColor: '#fff',
     alignItems: 'center',
     padding: 15,
     borderRadius: 8,
@@ -87,8 +102,8 @@ const Login: FC = () => {
       colors={['#ECE3ED', '#FDF2E9', '#ECE3ED']}
       style={styles.wrapper}>
       <View style={styles.greetView}>
-        <Text style={styles.greetText1}>Hello!</Text>
-        <Text style={styles.greetText2}>Sign in to your account</Text>
+        <Text style={styles.greetText1}>Welcome!</Text>
+        <Text style={styles.greetText2}>Glad to see you!!</Text>
       </View>
       <View style={styles.loginView}>
         <View style={styles.inputView}>
@@ -113,17 +128,24 @@ const Login: FC = () => {
         </View>
         <View style={styles.buttonView}>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.text1}>Sign In</Text>
+            <Text style={styles.text1}>Login</Text>
             {/* <Icon name="login" /> */}
           </TouchableOpacity>
         </View>
       </View>
       <View>
-        <Text>Or</Text>
+        <Text>Or Login with</Text>
+      </View>
+      <View style={styles.socialLoginView}>
+        <TouchableOpacity style={styles.googleButton}>
+          <Text style={styles.text1}>Google</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity>
-          <Text style={styles.text2}>Create a New Account</Text>
+          <Text>
+            Dont have an account? <Text style={styles.text2}>Sign Up Now</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
