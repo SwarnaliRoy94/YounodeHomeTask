@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   greetText1: {
-    fontSize: 32,
-    fontWeight: '600',
+    fontSize: 28,
+    // fontWeight: '600',
     color: '#884EA0',
   },
   greetText2: {
@@ -102,7 +102,8 @@ const SignUp: FC = () => {
       colors={['#ECE3ED', '#FDF2E9', '#ECE3ED']}
       style={styles.wrapper}>
       <View style={styles.greetView}>
-        <Text style={styles.greetText1}>Create New Account!!</Text>
+        <Text style={styles.greetText1}>Create Account</Text>
+        <Text style={styles.greetText1}>to get started now!</Text>
       </View>
       <View style={styles.loginView}>
         <View style={styles.inputView}>
