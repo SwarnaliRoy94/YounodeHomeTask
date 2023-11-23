@@ -8,9 +8,8 @@ import TodoItem from './TodoItem';
 const styles = StyleSheet.create({
   listView: {
     backgroundColor: '#E8D1EC',
-    width: '90%',
-    alignItems: 'center',
-    padding: 10,
+    width: '92%',
+    padding: 12,
     borderRadius: 15,
     margin: 10,
   },
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
 const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 5});
+  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 10});
 
   const todos = useSelector((state: any) => state.todos);
 
@@ -48,7 +47,7 @@ const TodoList: FC = () => {
               id={item.id}
               title={item.title}
               body={item.body}
-              image={item.image}
+              image={item.image_url}
             />
           );
         }}
