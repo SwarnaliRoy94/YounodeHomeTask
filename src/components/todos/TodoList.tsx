@@ -1,9 +1,9 @@
-import CheckBox from '@react-native-community/checkbox';
-import {useNavigation} from '@react-navigation/native';
-import React, {FC, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {TodoProps} from '../../utils/types';
+import React, {FC, useEffect, useState} from 'react';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useGetTodosQuery} from '../../../app/api/todoApi';
+import {storeTodos} from '../../../app/slices/todoSlice';
+import TodoItem from './TodoItem';
 
 const styles = StyleSheet.create({
   listView: {
@@ -14,64 +14,47 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: 10,
   },
-  todos: {
-    backgroundColor: '#ECE3ED',
-    display: 'flex',
-    flexDirection: 'row',
-    borderRadius: 8,
-    padding: 15,
-    marginVertical: 10,
-  },
-  imageView: {
-    justifyContent: 'center',
-    marginHorizontal: 15,
-  },
-  checkboxView: {
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  body: {
-    color: '#884EA0',
-    fontSize: 14,
-  },
 });
 
-const TodoList: FC<TodoProps> = ({title, body, image}) => {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-  const navigation: any = useNavigation();
-  const onPressTodo = () => {
-    navigation.navigate('TodoDescription');
+const TodoList: FC = () => {
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 5});
+
+  const todos = useSelector((state: any) => state.todos);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(storeTodos(data));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  const fetchMoreData = () => {
+    setCurrentPage(prev => prev + 1);
   };
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <View style={styles.listView}>
-      <TouchableOpacity
-        style={styles.todos}
-        onPress={() => {
-          onPressTodo();
-        }}>
-        <View style={styles.checkboxView}>
-          <CheckBox
-            value={isSelected}
-            onValueChange={setIsSelected}
-            tintColor="#D2B4DE"
-            onTintColor="#A504BF"
-            onCheckColor="#A504BF"
-            onAnimationType="bounce"
-            offAnimationType="stroke"
-          />
-        </View>
-        <View style={styles.imageView}>
-          <Text>{image}</Text>
-        </View>
-        <View>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.body}>{body}</Text>
-        </View>
-      </TouchableOpacity>
+      <FlatList
+        data={todos}
+        renderItem={({item}) => {
+          return (
+            <TodoItem
+              id={item.id}
+              title={item.title}
+              body={item.body}
+              image={item.image}
+            />
+          );
+        }}
+        onEndReached={fetchMoreData}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };
