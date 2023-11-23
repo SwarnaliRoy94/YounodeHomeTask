@@ -1,7 +1,9 @@
 import CheckBox from '@react-native-community/checkbox';
+import {useNavigation} from '@react-navigation/native';
 import React, {FC, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TodoProps} from '../../utils/types';
 
 const styles = StyleSheet.create({
   listView: {
@@ -14,7 +16,6 @@ const styles = StyleSheet.create({
   },
   todos: {
     backgroundColor: '#ECE3ED',
-    // backgroundColor: 'red',
     display: 'flex',
     flexDirection: 'row',
     borderRadius: 8,
@@ -38,12 +39,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const TodoList: FC = () => {
+const TodoList: FC<TodoProps> = ({title, body, image}) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
+  const navigation: any = useNavigation();
+  const onPressTodo = () => {
+    navigation.navigate('TodoDescription');
+  };
 
   return (
     <View style={styles.listView}>
-      <TouchableOpacity style={styles.todos}>
+      <TouchableOpacity
+        style={styles.todos}
+        onPress={() => {
+          onPressTodo();
+        }}>
         <View style={styles.checkboxView}>
           <CheckBox
             value={isSelected}
@@ -56,11 +65,11 @@ const TodoList: FC = () => {
           />
         </View>
         <View style={styles.imageView}>
-          <Text>Image</Text>
+          <Text>{image}</Text>
         </View>
         <View>
-          <Text style={styles.title}>Title</Text>
-          <Text style={styles.body}>Description</Text>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.body}>{body}</Text>
         </View>
       </TouchableOpacity>
     </View>
