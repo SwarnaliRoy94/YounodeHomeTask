@@ -8,15 +8,15 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   text: {
-    fontSize: 20,
+    fontSize: 24,
   },
   nameText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '600',
     color: '#A504BF',
   },
   taskNum: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#884EA0',
   },
 });
