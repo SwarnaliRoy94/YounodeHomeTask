@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {NameCardProps} from '../../utils/types';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -19,11 +20,6 @@ const styles = StyleSheet.create({
     color: '#884EA0',
   },
 });
-
-interface NameCardProps {
-  userName: string;
-  noOfTasks: number;
-}
 
 const NameCard: FC<NameCardProps> = ({userName, noOfTasks}) => {
   return (

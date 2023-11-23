@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import NameCard from './common/NameCard';
 import TodoList from './todos/TodoList';
+import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: '#ECE3ED',
     paddingVertical: 20,
     alignItems: 'center',
   },
@@ -14,10 +14,14 @@ const styles = StyleSheet.create({
 
 const Home: FC = () => {
   return (
-    <ScrollView contentContainerStyle={styles.wrapper}>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}
+      colors={['#ECE3ED', '#FAE5D3', '#ECE3ED']}
+      style={styles.wrapper}>
       <NameCard userName="Swarnali" noOfTasks={3} />
-      <TodoList />
-    </ScrollView>
+      <TodoList title="Todo" body="bla bla" image="1" />
+    </LinearGradient>
   );
 };
 

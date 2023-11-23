@@ -3,13 +3,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../components/Home';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
+import TodoDescription from '../components/todos/TodoDescription';
 
 const Stack = createStackNavigator();
 
 const Root = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Login"
         component={Login}
@@ -19,6 +19,12 @@ const Root = () => {
         name="SignUp"
         component={SignUp}
         options={{headerShown: false}}
+      />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen
+        name="TodoDescription"
+        component={TodoDescription}
+        options={{headerBackTitleVisible: false}}
       />
     </Stack.Navigator>
   );
