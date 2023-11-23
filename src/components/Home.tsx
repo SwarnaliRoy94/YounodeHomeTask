@@ -20,7 +20,7 @@ const Home: FC = () => {
       colors={['#ECE3ED', '#FAE5D3', '#ECE3ED']}
       style={styles.wrapper}>
       <NameCard userName="Swarnali" noOfTasks={3} />
-      <TodoList title="Todo" body="bla bla" image="1" />
+      <TodoList />
     </LinearGradient>
   );
 };
