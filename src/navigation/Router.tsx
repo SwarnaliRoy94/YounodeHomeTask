@@ -24,7 +24,7 @@ const Root = () => {
       <Stack.Screen
         name="TodoDescription"
         component={TodoDescription}
-        options={{headerBackTitleVisible: false}}
+        options={{headerBackTitleVisible: false, headerTitle: 'Todo Details'}}
       />
     </Stack.Navigator>
   );

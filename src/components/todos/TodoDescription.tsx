@@ -1,7 +1,6 @@
-import React, {FC} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {TodoProps} from '../../utils/types';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -10,47 +9,64 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    width: '90%',
     padding: 20,
   },
   topView: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 10,
     alignItems: 'center',
-    paddingVertical: 10,
-    justifyContent: 'space-between',
   },
   bottomView: {
-    backgroundColor: '#E8D1EC',
     padding: 20,
     borderRadius: 10,
+    alignItems: 'center',
   },
   imageView: {
-    marginRight: 15,
+    marginBottom: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    borderWidth: 3,
+    borderColor: '#000',
+    width: 205,
+    height: 305,
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 26,
+    fontWeight: 'bold',
     color: '#884EA0',
+  },
+  bodyText: {
+    fontSize: 16,
+    textAlign: 'justify',
+  },
+  tinyLogo: {
+    width: 200,
+    height: 300,
   },
 });
 
-const TodoDescription: FC<TodoProps> = ({title, body, image}) => {
+const TodoDescription = ({route}: {route: any}) => {
+  const {title, body, image} = route.params;
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
       end={{x: 0, y: 1}}
-      colors={['#FAE5D3', '#ECE3ED']}
+      colors={['#D2B4DE', '#ECE3ED', '#FAE5D3', '#ECE3ED', '#D2B4DE']}
       style={styles.wrapper}>
       <View style={styles.container}>
         <View style={styles.topView}>
-          <Text style={styles.titleText}>{title}title</Text>
-          <View style={styles.imageView}>
-            <Text>{image}image</Text>
-          </View>
+          <Text style={styles.titleText}>{title}</Text>
         </View>
         <View style={styles.bottomView}>
-          <Text>{body}body</Text>
+          <View style={styles.imageView}>
+            <Image
+              style={styles.tinyLogo}
+              source={{
+                uri: image,
+              }}
+            />
+          </View>
+          <Text style={styles.bodyText}>{body}</Text>
         </View>
       </View>
     </LinearGradient>

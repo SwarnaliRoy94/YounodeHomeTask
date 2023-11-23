@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
   },
   body: {
     paddingTop: 8,
     color: '#884EA0',
-    fontSize: 14,
+    fontSize: 16,
   },
   tinyLogo: {
     width: 50,
@@ -42,11 +42,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const TodoItem: FC<TodoProps> = ({title, body, image}) => {
+const TodoItem: FC<TodoProps> = ({id, title, body, image}) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const navigation: any = useNavigation();
   const onPressTodo = () => {
-    navigation.navigate('TodoDescription');
+    navigation.navigate('TodoDescription', {
+      id: id,
+      title: title,
+      body: body,
+      image: image,
+    });
   };
 
   const truncate = (str: string, length: number) => {
@@ -81,7 +86,7 @@ const TodoItem: FC<TodoProps> = ({title, body, image}) => {
         </View>
         <View>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.body}>{truncate(body, 30)}</Text>
+          <Text style={styles.body}>{truncate(body, 25)}</Text>
         </View>
       </TouchableOpacity>
     </View>
