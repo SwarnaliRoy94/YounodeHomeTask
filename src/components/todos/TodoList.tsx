@@ -1,9 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
-import TodoItem from './TodoItem';
-import {todoApi} from '../../../app/api/todoApi';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {useGetTodosQuery} from '../../../app/api/todoApi';
 import {storeTodos} from '../../../app/slices/todoSlice';
+import TodoItem from './TodoItem';
 
 const styles = StyleSheet.create({
   listView: {
@@ -18,25 +18,25 @@ const styles = StyleSheet.create({
 
 const TodoList: FC = () => {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentaPage] = useState(0);
-  const [getTodos, data, status] = todoApi.endpoints.getTodos.useLazyQuery();
+  const [currentPage, setCurrentPage] = useState(1);
+  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 5});
 
   const todos = useSelector((state: any) => state.todos);
 
   useEffect(() => {
-    getTodos({page: currentPage, limit: 5});
-  }, [getTodos, currentPage]);
-
-  useEffect(() => {
-    if (data.currentData) {
-      dispatch(storeTodos(data.currentData));
+    if (data) {
+      dispatch(storeTodos(data));
     }
-  }, [data.currentData, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
-  console.log(todos);
   const fetchMoreData = () => {
-    setCurrentaPage(prev => prev + 1);
+    setCurrentPage(prev => prev + 1);
   };
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <View style={styles.listView}>
@@ -53,6 +53,7 @@ const TodoList: FC = () => {
           );
         }}
         onEndReached={fetchMoreData}
+        keyExtractor={item => item.id}
       />
     </View>
   );

@@ -1,16 +1,18 @@
-import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {Provider} from 'react-redux';
+import {store} from './app/store';
 import Root from './src/navigation/Router';
-import {ApiProvider} from '@reduxjs/toolkit/dist/query/react';
-import {todoApi} from './app/api/todoApi';
 
 function App(): JSX.Element {
   return (
-    <ApiProvider api={todoApi}>
+    // <ApiProvider api={todoApi}>
+    <Provider store={store}>
       <NavigationContainer>
         <Root />
       </NavigationContainer>
-    </ApiProvider>
+    </Provider>
+    // </ApiProvider>
   );
 }
 
