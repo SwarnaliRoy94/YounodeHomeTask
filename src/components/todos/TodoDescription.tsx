@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     color: '#884EA0',
   },
 });
+
 const TodoDescription: FC<TodoProps> = ({title, body, image}) => {
   return (
     <LinearGradient

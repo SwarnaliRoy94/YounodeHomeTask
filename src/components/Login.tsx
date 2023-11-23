@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC, useState} from 'react';
 import {
   StyleSheet,
@@ -89,11 +90,16 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 8,
   },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 
 const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigation: any = useNavigation();
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
@@ -140,11 +146,10 @@ const Login: FC = () => {
           <Text style={styles.text1}>Google</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <TouchableOpacity>
-          <Text>
-            Dont have an account? <Text style={styles.text2}>Sign Up Now</Text>
-          </Text>
+      <View style={styles.footer}>
+        <Text>Dont have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.text2}>Sign Up Now</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
