@@ -8,6 +8,8 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -100,6 +102,16 @@ const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigation: any = useNavigation();
+
+  const handleGoogleSingIn = async () => {
+    const check = await GoogleSignin.hasPlayServices({
+      showPlayServicesUpdateDialog: true,
+    });
+
+    const {idToken} = await GoogleSignin.signIn();
+    console.log(idToken);
+  };
+
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
@@ -142,7 +154,9 @@ const Login: FC = () => {
         <Text>Or Login with</Text>
       </View>
       <View style={styles.socialLoginView}>
-        <TouchableOpacity style={styles.googleButton}>
+        <TouchableOpacity
+          onPress={() => handleGoogleSingIn()}
+          style={styles.googleButton}>
           <Text style={styles.text1}>Google</Text>
         </TouchableOpacity>
       </View>
