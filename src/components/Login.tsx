@@ -120,11 +120,14 @@ const Login: FC = () => {
     const signin = auth().signInWithCredential(googleCredential);
 
     //fetching user name
-    const userName = auth().currentUser?.displayName;
-    navigation.navigate('Home', {userName: userName});
+
+    // navigation.navigate('Home', {userName: userName});
 
     return signin;
   };
+  const userName = auth().currentUser?.displayName;
+
+  console.log(userName);
 
   return (
     <LinearGradient

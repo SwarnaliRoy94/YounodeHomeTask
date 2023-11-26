@@ -1,20 +1,20 @@
+import auth from '@react-native-firebase/auth';
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import NameCard from './common/NameCard';
 import TodoList from './todos/TodoList';
-import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    paddingVertical: 20,
+    paddingVertical: 30,
     alignItems: 'center',
   },
 });
 
-const Home = ({route}: {route: any}) => {
-  const {userName} = route.params;
-
+const Home = () => {
+  const userName = auth().currentUser?.displayName ?? 'Anonymous User';
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
