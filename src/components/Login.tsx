@@ -119,7 +119,11 @@ const Login: FC = () => {
 
     // Sign-in the user with the credential
     const signin = auth().signInWithCredential(googleCredential);
-    console.log('signin', signin);
+
+    //fetching user name
+    const userName = auth().currentUser?.displayName;
+
+    navigation.navigate('Home', {userName: userName});
     return signin;
   };
 

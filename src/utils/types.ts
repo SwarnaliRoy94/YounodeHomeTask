@@ -7,5 +7,4 @@ export interface TodoProps {
 
 export interface NameCardProps {
   userName: string;
-  noOfTasks: number;
 }
