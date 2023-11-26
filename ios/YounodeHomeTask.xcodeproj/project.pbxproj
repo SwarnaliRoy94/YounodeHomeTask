@@ -88,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* YounodeHomeTask */ = {
 			isa = PBXGroup;
 			children = (
+				BA3DFF622B13C2B8003721B6 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -138,6 +139,13 @@
 				00E356EE1AD99517003FC87E /* YounodeHomeTaskTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BA3DFF622B13C2B8003721B6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {

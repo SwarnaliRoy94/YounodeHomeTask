@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
   taskView: {
     marginBottom: 10,
+    alignItems: 'center',
   },
 });
 
@@ -51,7 +52,7 @@ const TodoList: FC = () => {
   }
 
   return data ? (
-    <>
+    <View>
       <View style={styles.taskView}>
         <Text style={styles.taskNum}>You have some tasks to complete!!</Text>
       </View>
@@ -72,7 +73,7 @@ const TodoList: FC = () => {
           keyExtractor={item => item.id}
         />
       </View>
-    </>
+    </View>
   ) : (
     <View>
       <Text style={styles.taskNum}>Oops! No task to show!</Text>
