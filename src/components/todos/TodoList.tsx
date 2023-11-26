@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 10});
+  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 200});
 
   const todos = useSelector((state: any) => state.todos);
 
