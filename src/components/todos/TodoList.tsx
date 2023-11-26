@@ -1,5 +1,11 @@
 import React, {FC, useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useGetTodosQuery} from '../../../app/api/todoApi';
 import {storeTodos} from '../../../app/slices/todoSlice';
@@ -12,6 +18,14 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 15,
     margin: 10,
+  },
+  taskNum: {
+    fontSize: 18,
+    color: '#884EA0',
+  },
+  taskView: {
+    marginBottom: 10,
+    alignItems: 'center',
   },
 });
 
@@ -37,23 +51,32 @@ const TodoList: FC = () => {
     return <ActivityIndicator />;
   }
 
-  return (
-    <View style={styles.listView}>
-      <FlatList
-        data={todos}
-        renderItem={({item}) => {
-          return (
-            <TodoItem
-              id={item.id}
-              title={item.title}
-              body={item.body}
-              image={item.image_url}
-            />
-          );
-        }}
-        onEndReached={fetchMoreData}
-        keyExtractor={item => item.id}
-      />
+  return data ? (
+    <View>
+      <View style={styles.taskView}>
+        <Text style={styles.taskNum}>You have some tasks to complete!!</Text>
+      </View>
+      <View style={styles.listView}>
+        <FlatList
+          data={todos}
+          renderItem={({item}) => {
+            return (
+              <TodoItem
+                id={item.id}
+                title={item.title}
+                body={item.body}
+                image={item.image_url}
+              />
+            );
+          }}
+          onEndReached={fetchMoreData}
+          keyExtractor={item => item.id}
+        />
+      </View>
+    </View>
+  ) : (
+    <View>
+      <Text style={styles.taskNum}>Oops! No task to show!</Text>
     </View>
   );
 };

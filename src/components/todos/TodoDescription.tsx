@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
 
 const TodoDescription = ({route}: {route: any}) => {
   const {title, body, image} = route.params;
+
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
