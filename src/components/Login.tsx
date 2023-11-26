@@ -114,7 +114,6 @@ const Login: FC = () => {
     });
 
     const {idToken} = await GoogleSignin.signIn();
-    console.log('idToken', idToken);
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
     // Sign-in the user with the credential
@@ -122,8 +121,8 @@ const Login: FC = () => {
 
     //fetching user name
     const userName = auth().currentUser?.displayName;
-
     navigation.navigate('Home', {userName: userName});
+
     return signin;
   };
 
