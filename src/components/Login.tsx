@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -98,18 +98,29 @@ const styles = StyleSheet.create({
   },
 });
 
+GoogleSignin.configure({
+  webClientId:
+    '1026783240637-n470dj33tc1qib0j1h8m1qjdvtpf62q6.apps.googleusercontent.com',
+});
+
 const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigation: any = useNavigation();
 
   const handleGoogleSingIn = async () => {
-    const check = await GoogleSignin.hasPlayServices({
+    await GoogleSignin.hasPlayServices({
       showPlayServicesUpdateDialog: true,
     });
 
     const {idToken} = await GoogleSignin.signIn();
-    console.log(idToken);
+    console.log('idToken', idToken);
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign-in the user with the credential
+    const signin = auth().signInWithCredential(googleCredential);
+    console.log('signin', signin);
+    return signin;
   };
 
   return (
