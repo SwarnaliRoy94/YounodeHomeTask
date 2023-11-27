@@ -7,8 +7,8 @@ import {
   View,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {useGetTodosQuery} from '../../app/api/todoApi';
-import {storeTodos} from '../../app/slices/todoSlice';
+import {useGetTodosQuery} from '../../../app/api/todoApi';
+import {storeTodos} from '../../../app/slices/todoSlice';
 import TodoItem from './TodoItem';
 
 const styles = StyleSheet.create({
