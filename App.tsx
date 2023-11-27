@@ -6,13 +6,11 @@ import Root from './src/navigation/Router';
 
 function App(): JSX.Element {
   return (
-    // <ApiProvider api={todoApi}>
     <Provider store={store}>
       <NavigationContainer>
         <Root />
       </NavigationContainer>
     </Provider>
-    // </ApiProvider>
   );
 }
 
