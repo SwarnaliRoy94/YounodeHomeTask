@@ -5,7 +5,8 @@ import {NameCardProps} from '../../utils/types';
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingTop: 20,
+    paddingBottom: 10,
   },
   text: {
     fontSize: 24,
@@ -27,7 +28,6 @@ const NameCard: FC<NameCardProps> = ({userName}) => {
       <Text style={styles.text}>
         Hello, <Text style={styles.nameText}>{userName}</Text>!
       </Text>
-      <Text style={styles.taskNum}>You have some new tasks to finish!! </Text>
     </View>
   );
 };
