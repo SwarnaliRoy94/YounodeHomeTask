@@ -4,9 +4,29 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+## Step 1: Installation and Adding the Dependencies
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- First , you have to install the dependencies
+
+```bash
+# using npm
+npm install
+
+#using yarn
+yarn install
+```
+
+- Then you have to install podfiles for ios
+  - go to the ios folder
+  - run the command below
+
+```bash
+pod install
+```
+
+## Step 2: Start the Metro Server
+
+You will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
 To start Metro, run the following command from the _root_ of your React Native project:
 
@@ -21,7 +41,7 @@ yarn start
 yarn start --reset-cache
 ```
 
-## Step 2: Start your Application
+## Step 3: Start your Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
@@ -75,22 +95,22 @@ This is one way to run your app — you can also run it directly from within And
 - List details screen
 
 ### Flatlist Optimization
- 
-- Used a function named *renderItem* instead of calling a direct callback function in flatlist's renderItem prop. 
 
-- Tried to optimized the flat list as we are getting a large dataset from the api. Used props for optimizing 
-   - removeClippedSubviews
-   - initialNumToRender
-   - maxToRenderPerBatch
+- Used a function named _renderItem_ instead of calling a direct callback function in flatlist's renderItem prop.
+
+- Tried to optimized the flat list as we are getting a large dataset from the api. Used props for optimizing
+  - removeClippedSubviews
+  - initialNumToRender
+  - maxToRenderPerBatch
 
 ### Pagination
 
-I created infinite scroll for the pagination, when *fetchMoreData* function is called in  *onEndReached* prop of Flatlist, it's fetching more data, thus creating the infinite scroll.
+I created infinite scroll for the pagination, when _fetchMoreData_ function is called in _onEndReached_ prop of Flatlist, it's fetching more data, thus creating the infinite scroll.
 
 ### State Management
 
-- used *Redux Toolkit* for local state management 
-- for API calling used *RTK Query*
+- used _Redux Toolkit_ for local state management
+- for API calling used _RTK Query_
 
 ### Env Variables
 
