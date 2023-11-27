@@ -1,6 +1,7 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   StyleSheet,
   Text,
@@ -35,7 +36,10 @@ const styles = StyleSheet.create({
 const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 200});
+  const {data, isLoading, error} = useGetTodosQuery({
+    page: currentPage,
+    limit: 200,
+  });
   const todos = useSelector((state: any) => state.todos);
 
   useEffect(() => {
@@ -60,8 +64,17 @@ const TodoList: FC = () => {
     );
   }, []);
 
+  const alertPrompt = () =>
+    Alert.alert('Error', error?.error, [
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
   if (isLoading) {
     return <ActivityIndicator />;
+  }
+
+  if (error) {
+    alertPrompt();
   }
 
   return data ? (
