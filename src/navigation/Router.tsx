@@ -9,10 +9,8 @@ import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const styles = StyleSheet.create({
   image: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    borderColor: 'purple',
+    width: 25,
+    height: 25,
     marginRight: 20,
   },
 });

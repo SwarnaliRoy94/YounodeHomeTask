@@ -16,16 +16,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#A504BF',
   },
-  taskNum: {
-    fontSize: 18,
-    color: '#884EA0',
-  },
-  image: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    borderColor: 'purple',
-  },
 });
 
 const NameCard: FC<NameCardProps> = ({userName}) => {

@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -141,7 +140,6 @@ const SignUp: FC = () => {
         <View style={styles.buttonView}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.text1}>Sign Up</Text>
-            {/* <Icon name="login" /> */}
           </TouchableOpacity>
         </View>
       </View>
