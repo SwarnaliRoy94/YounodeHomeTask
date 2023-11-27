@@ -69,3 +69,4 @@ yarn-error.log
 
 # Ignore .env.js file
 .env.js
+.env

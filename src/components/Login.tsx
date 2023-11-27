@@ -10,7 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-import {webClientId} from '../../.env';
+import {webClientId} from '@env';
 
 const styles = StyleSheet.create({
   wrapper: {
