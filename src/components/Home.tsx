@@ -3,7 +3,7 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import NameCard from './common/NameCard';
-import TodoList from './todos/TodoList';
+import TodoList from './TodoList';
 
 const styles = StyleSheet.create({
   wrapper: {

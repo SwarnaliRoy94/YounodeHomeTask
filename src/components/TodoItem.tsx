@@ -2,7 +2,7 @@ import CheckBox from '@react-native-community/checkbox';
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {TodoProps} from '../../utils/types';
+import {TodoProps} from '../utils/types';
 
 const styles = StyleSheet.create({
   container: {

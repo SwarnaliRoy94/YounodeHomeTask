@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import Home from '../components/Home';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
-import TodoDescription from '../components/todos/TodoDescription';
+import TodoDescription from '../components/TodoDescription';
 
 const Stack = createStackNavigator();
 

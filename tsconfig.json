@@ -1,3 +1,27 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "jsx": "react-native",
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "declaration": false,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
