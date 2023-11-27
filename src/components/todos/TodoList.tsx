@@ -12,6 +12,9 @@ import {storeTodos} from '../../../app/slices/todoSlice';
 import TodoItem from './TodoItem';
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   listView: {
     backgroundColor: '#E8D1EC',
     width: '92%',
@@ -33,7 +36,6 @@ const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 10});
-
   const todos = useSelector((state: any) => state.todos);
 
   useEffect(() => {

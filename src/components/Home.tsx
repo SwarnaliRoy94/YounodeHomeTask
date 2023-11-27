@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingVertical: 10,
     alignItems: 'center',
+    flex: 1,
   },
 });
 
