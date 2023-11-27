@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 10});
+  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 200});
   const todos = useSelector((state: any) => state.todos);
 
   useEffect(() => {
@@ -49,6 +49,17 @@ const TodoList: FC = () => {
     setCurrentPage(prev => prev + 1);
   };
 
+  const renderItem = useCallback(({item}) => {
+    return (
+      <TodoItem
+        id={item.id}
+        title={item.title}
+        body={item.body}
+        image={item.image_url}
+      />
+    );
+  }, []);
+
   if (isLoading) {
     return <ActivityIndicator />;
   }
@@ -61,18 +72,12 @@ const TodoList: FC = () => {
       <View style={styles.listView}>
         <FlatList
           data={todos}
-          renderItem={({item}) => {
-            return (
-              <TodoItem
-                id={item.id}
-                title={item.title}
-                body={item.body}
-                image={item.image_url}
-              />
-            );
-          }}
+          renderItem={renderItem}
           onEndReached={fetchMoreData}
           keyExtractor={item => item.id}
+          removeClippedSubviews
+          initialNumToRender={100}
+          maxToRenderPerBatch={100}
         />
       </View>
     </View>
