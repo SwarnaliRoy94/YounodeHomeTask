@@ -1,14 +1,16 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-// import {BASE_URL} from '@env';
+import {BASE_URL} from '../../.env';
 
 interface QueryParams {
   page: number;
   limit: number;
 }
 
+const baseUrl = BASE_URL;
+
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3000'}),
+  baseQuery: fetchBaseQuery({baseUrl: `${baseUrl}`}),
   endpoints: builder => ({
     getTodos: builder.query({
       query: (params: QueryParams) => ({

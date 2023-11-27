@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import {webClientId} from '../../.env';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -99,8 +100,7 @@ const styles = StyleSheet.create({
 });
 
 GoogleSignin.configure({
-  webClientId:
-    '1026783240637-n470dj33tc1qib0j1h8m1qjdvtpf62q6.apps.googleusercontent.com',
+  webClientId: webClientId,
 });
 
 const Login: FC = () => {
