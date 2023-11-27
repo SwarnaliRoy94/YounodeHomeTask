@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'center',
   },
+  titleText: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#884EA0',
+  },
   bottomView: {
     padding: 20,
     borderRadius: 10,
@@ -30,18 +35,13 @@ const styles = StyleSheet.create({
     width: 205,
     height: 305,
   },
-  titleText: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '#884EA0',
+  tinyLogo: {
+    width: 200,
+    height: 300,
   },
   bodyText: {
     fontSize: 16,
     textAlign: 'justify',
-  },
-  tinyLogo: {
-    width: 200,
-    height: 300,
   },
 });
 

@@ -1,6 +1,7 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   StyleSheet,
   Text,
@@ -12,6 +13,9 @@ import {storeTodos} from '../../../app/slices/todoSlice';
 import TodoItem from './TodoItem';
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   listView: {
     backgroundColor: '#E8D1EC',
     width: '92%',
@@ -32,8 +36,10 @@ const styles = StyleSheet.create({
 const TodoList: FC = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading} = useGetTodosQuery({page: currentPage, limit: 10});
-
+  const {data, isLoading, error} = useGetTodosQuery({
+    page: currentPage,
+    limit: 200,
+  });
   const todos = useSelector((state: any) => state.todos);
 
   useEffect(() => {
@@ -47,8 +53,28 @@ const TodoList: FC = () => {
     setCurrentPage(prev => prev + 1);
   };
 
+  const renderItem = useCallback(({item}) => {
+    return (
+      <TodoItem
+        id={item.id}
+        title={item.title}
+        body={item.body}
+        image={item.image_url}
+      />
+    );
+  }, []);
+
+  const alertPrompt = () =>
+    Alert.alert('Error', error?.error, [
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
   if (isLoading) {
     return <ActivityIndicator />;
+  }
+
+  if (error) {
+    alertPrompt();
   }
 
   return data ? (
@@ -59,18 +85,12 @@ const TodoList: FC = () => {
       <View style={styles.listView}>
         <FlatList
           data={todos}
-          renderItem={({item}) => {
-            return (
-              <TodoItem
-                id={item.id}
-                title={item.title}
-                body={item.body}
-                image={item.image_url}
-              />
-            );
-          }}
+          renderItem={renderItem}
           onEndReached={fetchMoreData}
           keyExtractor={item => item.id}
+          removeClippedSubviews
+          initialNumToRender={100}
+          maxToRenderPerBatch={100}
         />
       </View>
     </View>

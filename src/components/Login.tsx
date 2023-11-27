@@ -119,15 +119,8 @@ const Login: FC = () => {
     // Sign-in the user with the credential
     const signin = auth().signInWithCredential(googleCredential);
 
-    //fetching user name
-
-    // navigation.navigate('Home', {userName: userName});
-
     return signin;
   };
-  const userName = auth().currentUser?.displayName;
-
-  console.log(userName);
 
   return (
     <LinearGradient
@@ -163,7 +156,6 @@ const Login: FC = () => {
         <View style={styles.buttonView}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.text1}>Login</Text>
-            {/* <Icon name="login" /> */}
           </TouchableOpacity>
         </View>
       </View>

@@ -5,6 +5,15 @@ import Home from '../components/Home';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
 import TodoDescription from '../components/todos/TodoDescription';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+
+const styles = StyleSheet.create({
+  image: {
+    width: 25,
+    height: 25,
+    marginRight: 20,
+  },
+});
 
 const Stack = createStackNavigator();
 
@@ -24,15 +33,25 @@ const Root = () => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    console.log(isSignedIn);
-  }, [isSignedIn]);
-
+  const image = require('../assets/logout.jpeg');
+  const handleSignout = () => {
+    auth().signOut();
+  };
   return (
     <Stack.Navigator>
       {isSignedIn ? (
         <>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerRight: () => (
+                <TouchableOpacity onPress={handleSignout}>
+                  <Image source={image} style={styles.image} />
+                </TouchableOpacity>
+              ),
+            }}
+          />
           <Stack.Screen
             name="TodoDescription"
             component={TodoDescription}
