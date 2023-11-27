@@ -68,11 +68,33 @@ This is one way to run your app — you can also run it directly from within And
 - Home Screen
 
   - Displays logged in user's name
-  - renders the todo list from api
+  - used Flatlist to render the todo list
   - in the header there is a logout/signout button which redirects to the login screen
   - on clicking on each todo item redirects to the list details screen
 
 - List details screen
+
+### Flatlist Optimization
+ 
+- Used a function named *renderItem* instead of calling a direct callback function in flatlist's renderItem prop. 
+
+- Tried to optimized the flat list as we are getting a large dataset from the api. Used props for optimizing 
+   - removeClippedSubviews
+   - initialNumToRender
+   - maxToRenderPerBatch
+
+### Pagination
+
+I created infinite scroll for the pagination, when *fetchMoreData* function is called in  *onEndReached* prop of Flatlist, it's fetching more data, thus creating the infinite scroll.
+
+### State Management
+
+- used *Redux Toolkit* for local state management 
+- for API calling used *RTK Query*
+
+### Env Variables
+
+added .env file for keeping the secret keys secure
 
 ### Error Handling
 
