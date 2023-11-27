@@ -33,10 +33,6 @@ const Root = () => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    console.log(isSignedIn);
-  }, [isSignedIn]);
-
   const image = require('../assets/logout.jpeg');
   const handleSignout = () => {
     auth().signOut();
